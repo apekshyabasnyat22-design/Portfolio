@@ -1,0 +1,178 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        About | Apekshya Basnyat
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'portfolio/css/style.css' %}"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+            Apekshya
+        </div>
+
+
+        <ul>
+
+            <li>
+                <a href="{% url 'home' %}">
+                    Home
+                </a>
+            </li>
+
+
+            <li>
+                <a href="{% url 'about' %}">
+                    About
+                </a>
+            </li>
+
+
+            <li>
+                <a href="{% url 'home' %}#skills">
+                    Skills
+                </a>
+            </li>
+
+
+            <li>
+                <a href="{% url 'home' %}#projects">
+                    Projects
+                </a>
+            </li>
+
+
+            <li>
+                <a href="{% url 'home' %}#contact">
+                    Contact
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- ABOUT -->
+
+    <section class="about">
+
+        <div class="about-content">
+
+            <h1 class="section-title">
+                About Me
+            </h1>
+
+
+            <p>
+                Hello! I'm Apekshya Basnyat,
+                a Computer Science student specializing
+                in Data Science.
+            </p>
+
+
+            <p>
+                I am interested in Data Science,
+                Data Analytics, Artificial Intelligence,
+                Machine Learning and Web Development.
+            </p>
+
+
+            <p>
+                I enjoy learning new technologies
+                and applying what I learn by building
+                practical projects.
+            </p>
+
+
+            <p>
+                My goal is to continue developing my
+                technical skills and gain practical
+                experience in the technology industry.
+            </p>
+
+
+            <h2 class="section-title">
+                Education
+            </h2>
+
+
+            <p>
+                <strong>
+                    Bachelor of Computer Science
+                </strong>
+            </p>
+
+
+            <p>
+                Major: Data Science
+            </p>
+
+
+            <h2 class="section-title">
+                Interests
+            </h2>
+
+
+            <p>
+                Data Science • Data Analytics •
+                Artificial Intelligence •
+                Machine Learning •
+                Web Development
+            </p>
+
+
+            <br>
+
+
+            <a
+                href="{% url 'home' %}"
+                class="button"
+            >
+                Back to Home
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 Apekshya Basnyat.
+            All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>

@@ -1,0 +1,315 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Apekshya Basnyat | Portfolio
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'portfolio/css/style.css' %}"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+            Apekshya
+        </div>
+
+
+        <ul>
+
+            <li>
+                <a href="{% url 'home' %}">
+                    Home
+                </a>
+            </li>
+
+
+            <li>
+                <a href="{% url 'about' %}">
+                    About
+                </a>
+            </li>
+
+
+            <li>
+                <a href="#skills">
+                    Skills
+                </a>
+            </li>
+
+
+            <li>
+                <a href="#projects">
+                    Projects
+                </a>
+            </li>
+
+
+            <li>
+                <a href="#contact">
+                    Contact
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section
+        class="hero"
+        id="home"
+    >
+
+        <div class="hero-content">
+
+            <h1>
+                Hi, I'm
+                <span>Apekshya</span>
+            </h1>
+
+
+            <h2>
+                Computer Science Student
+                & Aspiring Data Scientist
+            </h2>
+
+
+            <p>
+                I am passionate about Data Science,
+                Data Analytics, Artificial Intelligence
+                and Web Development.
+            </p>
+
+
+            <a
+                href="#projects"
+                class="button"
+            >
+                View My Projects
+            </a>
+
+
+            <a
+                href="{% url 'about' %}"
+                class="button-outline"
+            >
+                About Me
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- SKILLS -->
+
+    <section id="skills">
+
+        <h2 class="section-title">
+            My Skills
+        </h2>
+
+
+        <div class="skills-container">
+
+            <div class="skill">
+                Python
+            </div>
+
+
+            <div class="skill">
+                Django
+            </div>
+
+
+            <div class="skill">
+                Data Science
+            </div>
+
+
+            <div class="skill">
+                Data Analytics
+            </div>
+
+
+            <div class="skill">
+                Machine Learning
+            </div>
+
+
+            <div class="skill">
+                SQL
+            </div>
+
+
+            <div class="skill">
+                HTML
+            </div>
+
+
+            <div class="skill">
+                CSS
+            </div>
+
+
+            <div class="skill">
+                Git & GitHub
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+
+    <section
+        class="projects"
+        id="projects"
+    >
+
+        <h2 class="section-title">
+            My Projects
+        </h2>
+
+
+        <div class="project-container">
+
+
+            {% for project in projects %}
+
+
+            <div class="project-card">
+
+                <h3>
+                    {{ project.title }}
+                </h3>
+
+
+                <p>
+                    {{ project.description }}
+                </p>
+
+
+                <p class="technology">
+
+                    <strong>
+                        Technologies:
+                    </strong>
+
+                    {{ project.technologies }}
+
+                </p>
+
+
+                {% if project.github_link %}
+
+                <a
+                    href="{{ project.github_link }}"
+                    class="button"
+                    target="_blank"
+                >
+                    GitHub
+                </a>
+
+                {% endif %}
+
+
+                {% if project.live_link %}
+
+                <a
+                    href="{{ project.live_link }}"
+                    class="button-outline"
+                    target="_blank"
+                >
+                    Live Demo
+                </a>
+
+                {% endif %}
+
+            </div>
+
+
+            {% empty %}
+
+
+            <p>
+                No projects added yet.
+            </p>
+
+
+            {% endfor %}
+
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section
+        class="contact"
+        id="contact"
+    >
+
+        <h2 class="section-title">
+            Contact Me
+        </h2>
+
+
+        <p>
+            Interested in working together
+            or connecting with me?
+        </p>
+
+
+        <a
+            href="mailto:your-email@example.com"
+            class="button"
+        >
+            Email Me
+        </a>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 Apekshya Basnyat.
+            All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
