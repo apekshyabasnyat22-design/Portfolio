@@ -1,0 +1,120 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Message Sent | Apekshya Basnyat
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'portfolio/css/style.css' %}"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+            Apekshya
+        </div>
+
+
+        <ul>
+
+            <li>
+                <a href="{% url 'home' %}">
+                    Home
+                </a>
+            </li>
+
+
+            <li>
+                <a href="{% url 'about' %}">
+                    About
+                </a>
+            </li>
+
+
+            <li>
+                <a href="{% url 'home' %}#skills">
+                    Skills
+                </a>
+            </li>
+
+
+            <li>
+                <a href="{% url 'home' %}#projects">
+                    Projects
+                </a>
+            </li>
+
+
+            <li>
+                <a href="{% url 'contact' %}">
+                    Contact
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- SUCCESS MESSAGE -->
+
+    <section class="contact">
+
+        <h1 class="section-title">
+            Message Sent!
+        </h1>
+
+
+        <p>
+            Thank you for reaching out.
+            I will get back to you soon.
+        </p>
+
+
+        <a
+            href="{% url 'home' %}"
+            class="button"
+        >
+            Back to Home
+        </a>
+
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 Apekshya Basnyat.
+            All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
