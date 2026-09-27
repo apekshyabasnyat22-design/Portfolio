@@ -1,315 +1,662 @@
-{% load static %}
 
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Apekshya Basnyat's portfolio. Computer Science graduate interested in Data Science, AI, and web development.">
+    <title>Apekshya Basnyat | Portfolio</title>
+    <link rel="stylesheet" href="{% static 'portfolio/css/style.css' %}">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <style>
+        :root {
+            --pink: #d95d98;
+            --pink-dark: #b8447c;
+            --pink-light: #fff0f6;
+            --lavender: #f6f0ff;
+            --text: #302632;
+            --muted: #77717b;
+            --white: #ffffff;
+            --border: #f1dce7;
+        }
 
-    <title>
-        Apekshya Basnyat | Portfolio
-    </title>
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
 
-    <link
-        rel="stylesheet"
-        href="{% static 'portfolio/css/style.css' %}"
-    >
+        body {
+            margin: 0;
+            background: #fffafd;
+            color: var(--text);
+            font-family: "Segoe UI", Arial, sans-serif;
+            line-height: 1.6;
+        }
 
+        a {
+            text-decoration: none;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 250, 253, 0.96);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(12px);
+        }
+
+        .navbar {
+            max-width: 1150px;
+            min-height: 76px;
+            margin: 0 auto;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .logo {
+            color: var(--pink-dark);
+            font-size: 23px;
+            font-weight: 750;
+            letter-spacing: -0.8px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: #514750;
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--pink);
+        }
+
+        .nav-links .nav-contact {
+            padding: 10px 18px;
+            border-radius: 24px;
+            background: var(--pink);
+            color: white;
+        }
+
+        .nav-links .nav-contact:hover {
+            background: var(--pink-dark);
+            color: white;
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            min-height: 570px;
+            display: flex;
+            align-items: center;
+            background:
+                radial-gradient(circle at 85% 25%, #f8dce9 0, transparent 28%),
+                radial-gradient(circle at 10% 90%, #eee4ff 0, transparent 30%),
+                #fffafd;
+        }
+
+        .hero-inner {
+            width: 100%;
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 90px 24px;
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr;
+            align-items: center;
+            gap: 55px;
+        }
+
+        .hero-label {
+            display: inline-block;
+            padding: 7px 14px;
+            border: 1px solid #f1c5db;
+            border-radius: 30px;
+            background: white;
+            color: var(--pink-dark);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            margin: 20px 0 8px;
+            font-size: clamp(42px, 6vw, 68px);
+            line-height: 1.1;
+            letter-spacing: -2.5px;
+        }
+
+        .hero h1 span {
+            color: var(--pink);
+        }
+
+        .hero h2 {
+            margin: 15px 0;
+            color: #625460;
+            font-size: clamp(19px, 2.5vw, 25px);
+            font-weight: 550;
+        }
+
+        .hero-description {
+            max-width: 570px;
+            margin: 18px 0 28px;
+            color: var(--muted);
+            font-size: 16px;
+            line-height: 1.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .primary-button,
+        .secondary-button {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 12px 22px;
+            border: 1px solid var(--pink);
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 700;
+            transition: 0.2s ease;
+        }
+
+        .primary-button {
+            background: var(--pink);
+            color: white;
+        }
+
+        .primary-button:hover {
+            background: var(--pink-dark);
+            border-color: var(--pink-dark);
+            transform: translateY(-2px);
+        }
+
+        .secondary-button {
+            background: white;
+            color: var(--pink-dark);
+        }
+
+        .secondary-button:hover {
+            background: var(--pink-light);
+            transform: translateY(-2px);
+        }
+
+        .hero-art {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-circle {
+            width: min(300px, 75vw);
+            aspect-ratio: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #f1c9dc;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #ffe8f2, #f3eaff);
+            box-shadow: 0 22px 60px rgba(189, 92, 143, 0.12);
+        }
+
+        .hero-initials {
+            color: var(--pink-dark);
+            font-family: Georgia, serif;
+            font-size: 100px;
+            font-weight: 700;
+        }
+
+        .section {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 78px 24px;
+        }
+
+        .section-heading {
+            margin-bottom: 35px;
+            text-align: center;
+        }
+
+        .section-eyebrow {
+            color: var(--pink-dark);
+            font-size: 12px;
+            font-weight: 750;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .section-heading h2 {
+            margin: 8px 0;
+            font-size: clamp(28px, 4vw, 38px);
+            letter-spacing: -1px;
+        }
+
+        .section-heading p {
+            max-width: 600px;
+            margin: 8px auto 0;
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        .skills-section {
+            background: white;
+        }
+
+        .skills-inner {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 75px 24px;
+        }
+
+        .skills-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-pill {
+            padding: 10px 17px;
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            background: #fff7fb;
+            color: #794663;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.2s ease;
+        }
+
+        .skill-pill:hover {
+            border-color: #e9a6c7;
+            background: var(--pink-light);
+            transform: translateY(-2px);
+        }
+
+        .projects-section {
+            background: #fffafd;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 24px;
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            background: white;
+            box-shadow: 0 8px 28px rgba(75, 38, 58, 0.05);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(75, 38, 58, 0.1);
+        }
+
+        .project-top {
+            min-height: 125px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #fce5f0, #f1e9ff);
+            color: #bb5487;
+            font-size: 38px;
+        }
+
+        .project-content {
+            flex: 1;
+            padding: 23px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-content h3 {
+            margin: 0 0 10px;
+            font-size: 19px;
+        }
+
+        .project-content p {
+            margin: 0 0 17px;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .project-tech {
+            margin-top: auto !important;
+            color: #9a4771 !important;
+            font-size: 12px !important;
+            font-weight: 650;
+        }
+
+        .project-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .project-actions a {
+            padding: 8px 13px;
+            border-radius: 20px;
+            background: var(--pink-light);
+            color: var(--pink-dark);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .project-actions a:hover {
+            background: #f7d3e5;
+        }
+
+        .all-projects {
+            margin-top: 32px;
+            text-align: center;
+        }
+
+        .all-projects a {
+            display: inline-block;
+            padding: 11px 20px;
+            border: 1px solid var(--pink);
+            border-radius: 30px;
+            color: var(--pink-dark);
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .all-projects a:hover {
+            background: var(--pink-light);
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #fff0f6, #f7f1ff);
+        }
+
+        .contact-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 75px 24px;
+            text-align: center;
+        }
+
+        .contact-inner p {
+            margin: 10px auto 25px;
+            color: var(--muted);
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .site-footer {
+            padding: 23px 20px;
+            background: #fff;
+            color: var(--muted);
+            text-align: center;
+            font-size: 13px;
+        }
+
+        @media (max-width: 760px) {
+            .navbar {
+                flex-direction: column;
+                gap: 12px;
+                padding: 14px 18px;
+            }
+
+            .nav-links {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 12px 20px;
+            }
+
+            .hero-inner {
+                grid-template-columns: 1fr;
+                gap: 35px;
+                padding: 65px 22px;
+                text-align: center;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-art {
+                grid-row: 1;
+            }
+
+            .hero-circle {
+                width: 190px;
+            }
+
+            .hero-initials {
+                font-size: 70px;
+            }
+
+            .section,
+            .skills-inner {
+                padding: 58px 20px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition: none !important;
+            }
+        }
+    </style>
 </head>
-
 
 <body>
 
+    <header class="site-header">
+        <nav class="navbar" aria-label="Main navigation">
+            <a href="{% url 'home' %}" class="logo">Apekshya.</a>
 
-    <!-- NAVIGATION -->
+            <ul class="nav-links">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact" class="nav-contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <nav>
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-inner">
+                <div class="hero-content">
+                    <span class="hero-label">Welcome to my portfolio</span>
 
-        <div class="logo">
-            Apekshya
-        </div>
+                    <h1>
+                        Hi, I'm <span>Apekshya</span>
+                    </h1>
 
+                    <h2>Computer Science | Data Science | AI</h2>
 
-        <ul>
+                    <p class="hero-description">
+                        I'm passionate about exploring data, building
+                        practical applications, and learning how technology
+                        can solve real-world problems. Welcome to my
+                        portfolio, where I share my projects and journey.
+                    </p>
 
-            <li>
-                <a href="{% url 'home' %}">
-                    Home
-                </a>
-            </li>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="primary-button">
+                            Explore My Projects →
+                        </a>
 
+                        <a href="{% url 'about' %}" class="secondary-button">
+                            More About Me
+                        </a>
+                    </div>
+                </div>
 
-            <li>
-                <a href="{% url 'about' %}">
-                    About
-                </a>
-            </li>
-
-
-            <li>
-                <a href="#skills">
-                    Skills
-                </a>
-            </li>
-
-
-            <li>
-                <a href="#projects">
-                    Projects
-                </a>
-            </li>
-
-
-            <li>
-                <a href="#contact">
-                    Contact
-                </a>
-            </li>
-
-        </ul>
-
-    </nav>
-
-
-    <!-- HERO -->
-
-    <section
-        class="hero"
-        id="home"
-    >
-
-        <div class="hero-content">
-
-            <h1>
-                Hi, I'm
-                <span>Apekshya</span>
-            </h1>
-
-
-            <h2>
-                Computer Science Student
-                & Aspiring Data Scientist
-            </h2>
-
-
-            <p>
-                I am passionate about Data Science,
-                Data Analytics, Artificial Intelligence
-                and Web Development.
-            </p>
-
-
-            <a
-                href="#projects"
-                class="button"
-            >
-                View My Projects
-            </a>
-
-
-            <a
-                href="{% url 'about' %}"
-                class="button-outline"
-            >
-                About Me
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- SKILLS -->
-
-    <section id="skills">
-
-        <h2 class="section-title">
-            My Skills
-        </h2>
-
-
-        <div class="skills-container">
-
-            <div class="skill">
-                Python
+                <div class="hero-art" aria-label="A decorative monogram">
+                    <div class="hero-circle">
+                        <span class="hero-initials">AB</span>
+                    </div>
+                </div>
             </div>
+        </section>
 
+        <section class="skills-section" id="skills">
+            <div class="skills-inner">
+                <div class="section-heading">
+                    <span class="section-eyebrow">What I work with</span>
+                    <h2>My Skills</h2>
+                    <p>
+                        Technologies and areas I've been learning
+                        and applying in my projects.
+                    </p>
+                </div>
 
-            <div class="skill">
-                Django
+                <div class="skills-grid">
+                    <span class="skill-pill">Python</span>
+                    <span class="skill-pill">Django</span>
+                    <span class="skill-pill">Data Science</span>
+                    <span class="skill-pill">Data Analytics</span>
+                    <span class="skill-pill">Machine Learning</span>
+                    <span class="skill-pill">SQL</span>
+                    <span class="skill-pill">HTML</span>
+                    <span class="skill-pill">CSS</span>
+                    <span class="skill-pill">Git &amp; GitHub</span>
+                </div>
             </div>
+        </section>
 
+        <section class="projects-section" id="projects">
+            <div class="section">
+                <div class="section-heading">
+                    <span class="section-eyebrow">A few things I've built</span>
+                    <h2>Featured Projects</h2>
+                    <p>
+                        A selection of projects where I've explored
+                        programming, data, and problem-solving.
+                    </p>
+                </div>
 
-            <div class="skill">
-                Data Science
+                <div class="projects-grid">
+                    {% for project in projects %}
+                        <article class="project-card">
+                            <div class="project-top" aria-hidden="true">
+                                ✦
+                            </div>
+
+                            <div class="project-content">
+                                <h3>{{ project.title }}</h3>
+
+                                <p>{{ project.description }}</p>
+
+                                <p class="project-tech">
+                                    Technologies: {{ project.technologies }}
+                                </p>
+
+                                <div class="project-actions">
+                                    {% if project.github_link %}
+                                        <a href="{{ project.github_link }}"
+                                           target="_blank"
+                                           rel="noopener noreferrer">
+                                            GitHub ↗
+                                        </a>
+                                    {% endif %}
+
+                                    {% if project.live_link %}
+                                        <a href="{{ project.live_link }}"
+                                           target="_blank"
+                                           rel="noopener noreferrer">
+                                            Live Demo ↗
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </article>
+                    {% empty %}
+                        <p>No projects added yet. Check back soon!</p>
+                    {% endfor %}
+                </div>
+
+                <div class="all-projects">
+                    <a href="{% url 'projects' %}">
+                        View All Projects →
+                    </a>
+                </div>
             </div>
+        </section>
 
-
-            <div class="skill">
-                Data Analytics
-            </div>
-
-
-            <div class="skill">
-                Machine Learning
-            </div>
-
-
-            <div class="skill">
-                SQL
-            </div>
-
-
-            <div class="skill">
-                HTML
-            </div>
-
-
-            <div class="skill">
-                CSS
-            </div>
-
-
-            <div class="skill">
-                Git & GitHub
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- PROJECTS -->
-
-    <section
-        class="projects"
-        id="projects"
-    >
-
-        <h2 class="section-title">
-            My Projects
-        </h2>
-
-
-        <div class="project-container">
-
-
-            {% for project in projects %}
-
-
-            <div class="project-card">
-
-                <h3>
-                    {{ project.title }}
-                </h3>
-
-
+        <section class="contact-section" id="contact">
+            <div class="contact-inner">
+                <span class="section-eyebrow">Let's connect</span>
+                <h2>Have a project or opportunity in mind?</h2>
                 <p>
-                    {{ project.description }}
+                    I'm always interested in learning, collaborating,
+                    and connecting with people in technology.
                 </p>
 
+                <div class="contact-buttons">
+                    <a href="{% url 'contact' %}" class="primary-button">
+                        Contact Me
+                    </a>
 
-                <p class="technology">
+                    <a href="https://github.com/apekshyabasnyat22-design"
+                       class="secondary-button"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        GitHub ↗
+                    </a>
 
-                    <strong>
-                        Technologies:
-                    </strong>
-
-                    {{ project.technologies }}
-
-                </p>
-
-
-                {% if project.github_link %}
-
-                <a
-                    href="{{ project.github_link }}"
-                    class="button"
-                    target="_blank"
-                >
-                    GitHub
-                </a>
-
-                {% endif %}
-
-
-                {% if project.live_link %}
-
-                <a
-                    href="{{ project.live_link }}"
-                    class="button-outline"
-                    target="_blank"
-                >
-                    Live Demo
-                </a>
-
-                {% endif %}
-
+                    <a href="https://www.linkedin.com/in/apekshya-basnyat-053a812a6/"
+                       class="secondary-button"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        LinkedIn ↗
+                    </a>
+                </div>
             </div>
+        </section>
+    </main>
 
-
-            {% empty %}
-
-
-            <p>
-                No projects added yet.
-            </p>
-
-
-            {% endfor %}
-
-
-        </div>
-
-    </section>
-
-
-    <!-- CONTACT -->
-
-    <section
-        class="contact"
-        id="contact"
-    >
-
-        <h2 class="section-title">
-            Contact Me
-        </h2>
-
-
-        <p>
-            Interested in working together
-            or connecting with me?
-        </p>
-
-
-        <a
-            href="mailto:your-email@example.com"
-            class="button"
-        >
-            Email Me
-        </a>
-
-    </section>
-
-
-    <!-- FOOTER -->
-
-    <footer>
-
-        <p>
-            © 2026 Apekshya Basnyat.
-            All Rights Reserved.
-        </p>
-
+    <footer class="site-footer">
+        <p>© 2026 Apekshya Basnyat. All rights reserved.</p>
     </footer>
 
-
 </body>
-
 </html>

@@ -1,178 +1,356 @@
-{% load static %}
 
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | Apekshya Basnyat</title>
+    <link rel="stylesheet" href="{% static 'portfolio/css/style.css' %}">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-    <title>
-        About | Apekshya Basnyat
-    </title>
+        html {
+            scroll-behavior: smooth;
+        }
 
-    <link
-        rel="stylesheet"
-        href="{% static 'portfolio/css/style.css' %}"
-    >
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #fffafd;
+            color: #302632;
+            line-height: 1.7;
+        }
 
+        a {
+            text-decoration: none;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(255, 250, 253, 0.97);
+            border-bottom: 1px solid #f1dce7;
+        }
+
+        .navbar {
+            max-width: 1150px;
+            min-height: 76px;
+            margin: auto;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .logo {
+            color: #b8447c;
+            font-size: 23px;
+            font-weight: 750;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-links a {
+            color: #514750;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #d95d98;
+        }
+
+        .nav-links .nav-contact {
+            padding: 10px 18px;
+            border-radius: 25px;
+            background: #d95d98;
+            color: white;
+        }
+
+        .about-hero {
+            padding: 75px 24px 45px;
+            text-align: center;
+            background:
+                radial-gradient(circle at 15% 30%, #f4e6ff, transparent 30%),
+                radial-gradient(circle at 85% 20%, #f9dce9, transparent 30%),
+                #fffafd;
+        }
+
+        .eyebrow {
+            color: #b8447c;
+            font-size: 12px;
+            font-weight: 750;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .about-hero h1 {
+            margin: 10px 0;
+            font-size: clamp(35px, 6vw, 52px);
+            line-height: 1.2;
+        }
+
+        .about-hero p {
+            max-width: 650px;
+            margin: 12px auto 0;
+            color: #77717b;
+        }
+
+        .about-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 45px 24px 80px;
+        }
+
+        .about-card {
+            padding: 32px;
+            margin-bottom: 25px;
+            border: 1px solid #f1dce7;
+            border-radius: 18px;
+            background: white;
+            box-shadow: 0 8px 28px rgba(75, 38, 58, 0.05);
+        }
+
+        .about-card h2 {
+            margin: 0 0 14px;
+            font-size: 23px;
+        }
+
+        .about-card p {
+            margin: 0 0 12px;
+            color: #716b72;
+        }
+
+        .about-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .education-details {
+            padding: 20px;
+            border-left: 3px solid #d95d98;
+            border-radius: 0 12px 12px 0;
+            background: #fff5fa;
+        }
+
+        .education-details h3 {
+            margin: 0 0 5px;
+            font-size: 18px;
+        }
+
+        .education-details p {
+            margin: 4px 0;
+        }
+
+        .interest-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
+        }
+
+        .interest-item {
+            padding: 17px;
+            border: 1px solid #f1dce7;
+            border-radius: 12px;
+            background: #fff7fb;
+            color: #794663;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .about-actions {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 35px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 22px;
+            border: 1px solid #d95d98;
+            border-radius: 30px;
+            background: #d95d98;
+            color: white;
+            font-size: 14px;
+            font-weight: 700;
+            transition: 0.2s ease;
+        }
+
+        .button:hover {
+            background: #b8447c;
+            border-color: #b8447c;
+            transform: translateY(-2px);
+        }
+
+        .button-outline {
+            display: inline-block;
+            padding: 12px 22px;
+            border: 1px solid #d95d98;
+            border-radius: 30px;
+            background: white;
+            color: #b8447c;
+            font-size: 14px;
+            font-weight: 700;
+            transition: 0.2s ease;
+        }
+
+        .button-outline:hover {
+            background: #fff0f6;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            padding: 22px;
+            background: white;
+            color: #77717b;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        @media (max-width: 700px) {
+            .navbar {
+                flex-direction: column;
+                padding: 14px 18px;
+                gap: 12px;
+            }
+
+            .nav-links {
+                justify-content: center;
+                gap: 12px 18px;
+            }
+
+            .about-card {
+                padding: 23px;
+            }
+
+            .about-container {
+                padding: 30px 18px 60px;
+            }
+        }
+    </style>
 </head>
-
 
 <body>
 
+    <header class="site-header">
+        <nav class="navbar" aria-label="Main navigation">
+            <a href="{% url 'home' %}" class="logo">Apekshya.</a>
 
-    <!-- NAVIGATION -->
+            <ul class="nav-links">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}" class="active">About</a></li>
+                <li><a href="{% url 'home' %}#skills">Skills</a></li>
+                <li><a href="{% url 'projects' %}">Projects</a></li>
+                <li><a href="{% url 'contact' %}" class="nav-contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <nav>
+    <main>
+        <section class="about-hero">
+            <span class="eyebrow">Get to know me</span>
+            <h1>About Me</h1>
+            <p>
+                A little about my background, education,
+                interests, and journey in technology.
+            </p>
+        </section>
 
-        <div class="logo">
-            Apekshya
-        </div>
+        <div class="about-container">
 
+            <section class="about-card">
+                <h2>Hello, I'm Apekshya!</h2>
+                <p>
+                    I'm a Computer Science graduate with a major in
+                    Data Science from Taylor's University, through
+                    IIMS College.
+                </p>
+                <p>
+                    I'm interested in Data Science, Data Analytics,
+                    Artificial Intelligence, and web development.
+                    I enjoy learning new technologies and applying
+                    them through practical projects.
+                </p>
+                <p>
+                    I'm looking for opportunities to grow my technical
+                    skills, gain hands-on experience, and contribute
+                    to meaningful projects.
+                </p>
+            </section>
 
-        <ul>
+            <section class="about-card">
+                <h2>Education</h2>
+                <div class="education-details">
+                    <h3>Bachelor's Degree in Computer Science</h3>
+                    <p><strong>Major:</strong> Data Science</p>
+                    <p>Taylor's University | Through IIMS College</p>
+                    <p>
+                        Focus areas: Programming, data analysis,
+                        machine learning, and software development.
+                    </p>
+                </div>
+            </section>
 
-            <li>
-                <a href="{% url 'home' %}">
-                    Home
+            <section class="about-card">
+                <h2>My Interests</h2>
+                <p>
+                    Outside of my technical interests, I enjoy
+                    exploring new places, music, photography,
+                    and spending time learning new things.
+                </p>
+
+                <div class="interest-grid">
+                    <div class="interest-item">Data &amp; Technology</div>
+                    <div class="interest-item">Photography</div>
+                    <div class="interest-item">Music</div>
+                    <div class="interest-item">Travel</div>
+                    <div class="interest-item">Learning</div>
+                    <div class="interest-item">Volunteering</div>
+                </div>
+            </section>
+
+            <section class="about-card">
+                <h2>My Career Goals</h2>
+                <p>
+                    I'm interested in starting my career in Data
+                    Analytics, Data Science, or AI. I want to
+                    strengthen my technical foundation, work on
+                    real-world problems, and learn from experienced
+                    professionals.
+                </p>
+            </section>
+
+            <div class="about-actions">
+                <a href="{% url 'projects' %}" class="button">
+                    Explore My Projects →
                 </a>
-            </li>
-
-
-            <li>
-                <a href="{% url 'about' %}">
-                    About
+                <a href="{% url 'contact' %}" class="button-outline">
+                    Get in Touch
                 </a>
-            </li>
-
-
-            <li>
-                <a href="{% url 'home' %}#skills">
-                    Skills
-                </a>
-            </li>
-
-
-            <li>
-                <a href="{% url 'home' %}#projects">
-                    Projects
-                </a>
-            </li>
-
-
-            <li>
-                <a href="{% url 'home' %}#contact">
-                    Contact
-                </a>
-            </li>
-
-        </ul>
-
-    </nav>
-
-
-    <!-- ABOUT -->
-
-    <section class="about">
-
-        <div class="about-content">
-
-            <h1 class="section-title">
-                About Me
-            </h1>
-
-
-            <p>
-                Hello! I'm Apekshya Basnyat,
-                a Computer Science student specializing
-                in Data Science.
-            </p>
-
-
-            <p>
-                I am interested in Data Science,
-                Data Analytics, Artificial Intelligence,
-                Machine Learning and Web Development.
-            </p>
-
-
-            <p>
-                I enjoy learning new technologies
-                and applying what I learn by building
-                practical projects.
-            </p>
-
-
-            <p>
-                My goal is to continue developing my
-                technical skills and gain practical
-                experience in the technology industry.
-            </p>
-
-
-            <h2 class="section-title">
-                Education
-            </h2>
-
-
-            <p>
-                <strong>
-                    Bachelor of Computer Science
-                </strong>
-            </p>
-
-
-            <p>
-                Major: Data Science
-            </p>
-
-
-            <h2 class="section-title">
-                Interests
-            </h2>
-
-
-            <p>
-                Data Science • Data Analytics •
-                Artificial Intelligence •
-                Machine Learning •
-                Web Development
-            </p>
-
-
-            <br>
-
-
-            <a
-                href="{% url 'home' %}"
-                class="button"
-            >
-                Back to Home
-            </a>
+            </div>
 
         </div>
-
-    </section>
-
-
-    <!-- FOOTER -->
+    </main>
 
     <footer>
-
-        <p>
-            © 2026 Apekshya Basnyat.
-            All Rights Reserved.
-        </p>
-
+        <p>© 2026 Apekshya Basnyat. All rights reserved.</p>
     </footer>
 
-
 </body>
-
 </html>

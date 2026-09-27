@@ -47,3 +47,6 @@ def contact(request):
 
 def contact_success(request):
     return render(request, 'portfolio/contact_success.html')
+
+def skills(request):
+    return render(request, 'portfolio/skills.html')

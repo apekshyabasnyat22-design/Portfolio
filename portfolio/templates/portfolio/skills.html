@@ -1,0 +1,739 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Skills & Certificates | Apekshya Basnyat</title>
+
+    <link rel="stylesheet" href="{% static 'portfolio/css/style.css' %}">
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #fff9fc;
+            color: #3f3440;
+        }
+
+        /* Navigation */
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid #f3dce7;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #d66b93;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #5c4b57;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #d66b93;
+        }
+
+        .nav-contact {
+            background: #d66b93;
+            color: white !important;
+            padding: 9px 18px;
+            border-radius: 20px;
+        }
+
+        /* Page Header */
+
+        .page-header {
+            text-align: center;
+            padding: 80px 20px 50px;
+        }
+
+        .small-title {
+            color: #d66b93;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .page-header h1 {
+            font-size: 45px;
+            margin: 12px 0;
+            color: #3e3039;
+        }
+
+        .page-header p {
+            max-width: 650px;
+            margin: auto;
+            color: #766a73;
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* Main Container */
+
+        .container {
+            width: 84%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        /* Section */
+
+        .section {
+            margin-bottom: 75px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-title h2 {
+            font-size: 30px;
+            color: #3e3039;
+            margin-bottom: 8px;
+        }
+
+        .section-title p {
+            color: #81747c;
+            margin: 0;
+        }
+
+        /* Skills */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+
+        .skill-card {
+            background: white;
+            border: 1px solid #f1dfe7;
+            border-radius: 18px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 7px 20px rgba(180, 120, 145, 0.06);
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(180, 120, 145, 0.12);
+        }
+
+        .skill-icon {
+            width: 48px;
+            height: 48px;
+            background: #fdebf3;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 21px;
+        }
+
+        .skill-card h3 {
+            margin: 0 0 7px;
+            color: #44363f;
+            font-size: 18px;
+        }
+
+        .skill-card p {
+            margin: 0;
+            color: #81747c;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* Certificates */
+
+        .certificate-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 22px;
+        }
+
+        .certificate-card {
+            background: white;
+            border: 1px solid #f1dfe7;
+            border-radius: 20px;
+            padding: 27px;
+            box-shadow: 0 7px 20px rgba(180, 120, 145, 0.06);
+            transition: 0.3s;
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(180, 120, 145, 0.12);
+        }
+
+        .certificate-label {
+            display: inline-block;
+            background: #fdebf3;
+            color: #c45d85;
+            padding: 6px 11px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .certificate-card h3 {
+            margin: 0 0 10px;
+            font-size: 19px;
+            color: #40333b;
+            line-height: 1.4;
+        }
+
+        .certificate-card .issuer {
+            color: #d66b93;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .certificate-card .date {
+            color: #8a7b84;
+            font-size: 13px;
+            margin-bottom: 14px;
+        }
+
+        .certificate-card p {
+            color: #71646d;
+            font-size: 13px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Learning Focus */
+
+        .learning-box {
+            background: linear-gradient(
+                135deg,
+                #fff0f6,
+                #fff9fc
+            );
+
+            border: 1px solid #f1d6e2;
+            border-radius: 22px;
+            padding: 35px;
+            text-align: center;
+        }
+
+        .learning-box h2 {
+            margin-top: 0;
+            color: #3e3039;
+        }
+
+        .learning-box p {
+            max-width: 700px;
+            margin: auto;
+            color: #71646d;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid #f3dce7;
+            color: #8b7c85;
+            font-size: 14px;
+            margin-top: 30px;
+        }
+
+        /* Mobile */
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                padding: 16px 5%;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 13px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            .page-header {
+                padding: 55px 20px 35px;
+            }
+
+            .page-header h1 {
+                font-size: 34px;
+            }
+
+            .container {
+                width: 90%;
+            }
+
+            .learning-box {
+                padding: 25px 20px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav class="navbar">
+
+        <a href="{% url 'home' %}" class="logo">
+            AB.
+        </a>
+
+        <div class="nav-links">
+
+            <a href="{% url 'home' %}">
+                Home
+            </a>
+
+            <a href="{% url 'about' %}">
+                About
+            </a>
+
+            <a href="{% url 'skills' %}">
+                Skills
+            </a>
+
+            <a href="{% url 'projects' %}">
+                Projects
+            </a>
+
+            <a href="{% url 'contact' %}" class="nav-contact">
+                Contact
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Page Header -->
+
+    <header class="page-header">
+
+        <div class="small-title">
+            What I Work With
+        </div>
+
+        <h1>
+            Skills & Certificates
+        </h1>
+
+        <p>
+            A collection of the technical skills I am developing and
+            certifications and learning experiences I have completed
+            throughout my academic and professional journey.
+        </p>
+
+    </header>
+
+
+    <main class="container">
+
+
+        <!-- Technical Skills -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>
+                    Technical Skills
+                </h2>
+
+                <p>
+                    Technologies and areas I am currently working with.
+                </p>
+
+            </div>
+
+
+            <div class="skills-grid">
+
+                <div class="skill-card">
+
+                    <div class="skill-icon">
+                        🐍
+                    </div>
+
+                    <h3>
+                        Python
+                    </h3>
+
+                    <p>
+                        Programming, data processing and beginner
+                        machine learning projects.
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card">
+
+                    <div class="skill-icon">
+                        📊
+                    </div>
+
+                    <h3>
+                        Data Analysis
+                    </h3>
+
+                    <p>
+                        Exploring and understanding datasets to
+                        find useful insights.
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card">
+
+                    <div class="skill-icon">
+                        🤖
+                    </div>
+
+                    <h3>
+                        Machine Learning
+                    </h3>
+
+                    <p>
+                        Building and experimenting with machine
+                        learning models through projects.
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card">
+
+                    <div class="skill-icon">
+                        🗄️
+                    </div>
+
+                    <h3>
+                        SQL
+                    </h3>
+
+                    <p>
+                        Working with databases, queries and
+                        structured data.
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card">
+
+                    <div class="skill-icon">
+                        📈
+                    </div>
+
+                    <h3>
+                        Data Science
+                    </h3>
+
+                    <p>
+                        Applying programming, data analysis and
+                        machine learning concepts.
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card">
+
+                    <div class="skill-icon">
+                        🌐
+                    </div>
+
+                    <h3>
+                        Django
+                    </h3>
+
+                    <p>
+                        Building web applications and connecting
+                        applications with databases.
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card">
+
+                    <div class="skill-icon">
+                        🐘
+                    </div>
+
+                    <h3>
+                        PostgreSQL
+                    </h3>
+
+                    <p>
+                        Working with relational databases in
+                        Django projects.
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card">
+
+                    <div class="skill-icon">
+                        🔧
+                    </div>
+
+                    <h3>
+                        Git & GitHub
+                    </h3>
+
+                    <p>
+                        Version control and maintaining projects
+                        on GitHub.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Certificates -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>
+                    Certificates & Learning
+                </h2>
+
+                <p>
+                    Courses, workshops and learning experiences.
+                </p>
+
+            </div>
+
+
+            <div class="certificate-list">
+
+
+                <div class="certificate-card">
+
+                    <span class="certificate-label">
+                        COURSE
+                    </span>
+
+                    <h3>
+                        Introduction to MS Excel
+                    </h3>
+
+                    <div class="issuer">
+                        Simplilearn
+                    </div>
+
+                    <div class="date">
+                        Completed · February 2026
+                    </div>
+
+                    <p>
+                        Completed a learning course covering
+                        fundamental Microsoft Excel concepts and
+                        spreadsheet skills.
+                    </p>
+
+                </div>
+
+
+                <div class="certificate-card">
+
+                    <span class="certificate-label">
+                        WORKSHOP
+                    </span>
+
+                    <h3>
+                        Portfolio Website Essentials Virtual Workshop
+                    </h3>
+
+                    <div class="issuer">
+                        CST Association of Nepal × Rotaract
+                    </div>
+
+                    <div class="date">
+                        Participation Certificate
+                    </div>
+
+                    <p>
+                        Participated in a virtual workshop focused
+                        on essential concepts for creating and
+                        presenting a portfolio website.
+                    </p>
+
+                </div>
+
+
+                <div class="certificate-card">
+
+                    <span class="certificate-label">
+                        AI LEARNING
+                    </span>
+
+                    <h3>
+                        AI Literacy for All
+                    </h3>
+
+                    <div class="issuer">
+                        Digital Education Council × Taylor's University
+                    </div>
+
+                    <div class="date">
+                        Issued · May 2026
+                    </div>
+
+                    <p>
+                        Completed an AI literacy learning experience
+                        covering fundamental concepts and responsible
+                        understanding of artificial intelligence.
+                    </p>
+
+                </div>
+
+
+                <div class="certificate-card">
+
+                    <span class="certificate-label">
+                        WEBINAR
+                    </span>
+
+                    <h3>
+                        Building A Culture Of Security
+                    </h3>
+
+                    <div class="issuer">
+                        EC-Council
+                    </div>
+
+                    <div class="date">
+                        August 2026
+                    </div>
+
+                    <p>
+                        Participated in an EC-Council security
+                        learning session and expanded awareness of
+                        cybersecurity practices.
+                    </p>
+
+                </div>
+
+
+                <div class="certificate-card">
+
+                    <span class="certificate-label">
+                        WEBINAR
+                    </span>
+
+                    <h3>
+                        Hack an AI Agent Live
+                    </h3>
+
+                    <div class="issuer">
+                        EC-Council
+                    </div>
+
+                    <div class="date">
+                        August 2026 · 1 CPE Credit
+                    </div>
+
+                    <p>
+                        Attended a session exploring security
+                        considerations around AI agents and
+                        AI-enabled systems.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- Current Learning -->
+
+        <section class="section">
+
+            <div class="learning-box">
+
+                <h2>
+                    Currently Learning
+                </h2>
+
+                <p>
+                    I am continuing to strengthen my skills in
+                    Python, SQL, data analysis, machine learning,
+                    artificial intelligence and Django while
+                    building practical projects and preparing for
+                    professional opportunities.
+                </p>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        © 2026 Apekshya Basnyat · Built with Django
+
+    </footer>
+
+
+</body>
+
+</html>

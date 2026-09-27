@@ -1,250 +1,394 @@
-
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Projects | Apekshya Basnyat</title>
+
     <link rel="stylesheet" href="{% static 'portfolio/css/style.css' %}">
+
     <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #fff9fc;
+            color: #3f3440;
+        }
+
         .projects-page {
-            max-width: 1150px;
-            margin: 0 auto;
-            padding: 60px 24px;
+            min-height: 100vh;
         }
 
-        .projects-heading {
+        /* Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid #f3dce7;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #d66b93;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #5c4b57;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #d66b93;
+        }
+
+        .nav-contact {
+            background: #d66b93;
+            color: white !important;
+            padding: 9px 18px;
+            border-radius: 20px;
+        }
+
+        .nav-contact:hover {
+            background: #c45d85;
+        }
+
+        /* Header */
+        .projects-header {
             text-align: center;
-            margin-bottom: 45px;
+            padding: 80px 20px 45px;
         }
 
-        .projects-heading .eyebrow {
-            color: #d65d96;
+        .small-title {
+            color: #d66b93;
+            font-size: 14px;
             font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
-            font-size: 13px;
         }
 
-        .projects-heading h1 {
-            font-size: clamp(2.2rem, 5vw, 3.5rem);
+        .projects-header h1 {
+            font-size: 45px;
             margin: 12px 0;
-            color: #30232b;
+            color: #3e3039;
         }
 
-        .projects-heading p {
-            color: #777078;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.8;
+        .projects-header p {
+            max-width: 650px;
+            margin: auto;
+            color: #766a73;
+            line-height: 1.7;
+            font-size: 16px;
         }
 
-        .project-grid {
+        /* Projects */
+        .projects-container {
+            width: 84%;
+            max-width: 1150px;
+            margin: auto;
+            padding-bottom: 80px;
+        }
+
+        .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 28px;
         }
 
         .project-card {
-            background: #fff;
-            border: 1px solid #f2dce7;
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(80, 40, 60, 0.06);
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            background: white;
+            border: 1px solid #f1dfe7;
+            border-radius: 22px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(180, 120, 145, 0.08);
+            transition: 0.3s ease;
             display: flex;
             flex-direction: column;
         }
 
         .project-card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 14px 32px rgba(80, 40, 60, 0.12);
+            box-shadow: 0 14px 35px rgba(180, 120, 145, 0.15);
         }
 
-        .project-placeholder {
-            height: 190px;
-            background: linear-gradient(135deg, #fce7f3, #f5e9ff);
+        .project-number {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: #fdebf3;
+            color: #d66b93;
             display: flex;
-            justify-content: center;
             align-items: center;
-            color: #bd558a;
-            font-size: 48px;
+            justify-content: center;
+            font-weight: 700;
+            margin-bottom: 20px;
         }
 
-        .project-content {
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            flex: 1;
+        .project-card h2 {
+            font-size: 23px;
+            margin: 0 0 13px;
+            color: #3e3039;
         }
 
-        .project-content h2 {
-            color: #30232b;
-            font-size: 21px;
-            margin: 0 0 12px;
+        .project-description {
+            color: #6f636b;
+            line-height: 1.7;
+            font-size: 15px;
+            margin-bottom: 20px;
         }
 
-        .project-content p {
-            color: #716b72;
-            font-size: 14px;
-            line-height: 1.8;
-            margin: 0 0 18px;
-        }
-
-        .technology-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
+        .technologies {
+            margin-top: auto;
             margin-bottom: 22px;
         }
 
-        .technology {
-            background: #fff0f6;
-            color: #a83d72;
-            border-radius: 20px;
-            padding: 6px 11px;
-            font-size: 12px;
-            font-weight: 600;
+        .technologies strong {
+            display: block;
+            font-size: 13px;
+            color: #51434c;
+            margin-bottom: 10px;
         }
 
-        .project-links {
+        .tech-text {
+            background: #fff3f7;
+            border-radius: 10px;
+            padding: 10px 12px;
+            color: #8a6474;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* Buttons */
+        .project-buttons {
             display: flex;
-            flex-wrap: wrap;
             gap: 10px;
-            margin-top: auto;
+            flex-wrap: wrap;
         }
 
-        .project-links a {
-            display: inline-block;
+        .project-btn {
             text-decoration: none;
-            padding: 10px 16px;
-            border-radius: 9px;
+            padding: 10px 17px;
+            border-radius: 10px;
             font-size: 13px;
             font-weight: 600;
-            transition: background 0.2s ease;
+            transition: 0.3s;
         }
 
-        .github-button {
-            background: #30232b;
+        .github-btn {
+            background: #3e3039;
             color: white;
         }
 
-        .github-button:hover {
-            background: #51404b;
+        .github-btn:hover {
+            background: #594650;
         }
 
-        .demo-button {
-            background: #f9d8e8;
-            color: #8e315e;
+        .live-btn {
+            background: #f7d8e5;
+            color: #a84f73;
         }
 
-        .demo-button:hover {
-            background: #f4bfd8;
+        .live-btn:hover {
+            background: #efc3d4;
         }
 
-        .empty-projects {
+        /* Empty state */
+        .no-projects {
             text-align: center;
-            padding: 45px 20px;
-            background: #fff7fb;
-            border: 1px dashed #e8b8d0;
-            border-radius: 16px;
-            color: #776773;
+            background: white;
+            border: 1px dashed #e5bdcf;
+            border-radius: 20px;
+            padding: 50px 20px;
+            color: #766a73;
         }
 
-        .back-home {
-            display: inline-block;
-            margin-top: 40px;
-            color: #b3447b;
-            text-decoration: none;
-            font-weight: 600;
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid #f3dce7;
+            color: #8b7c85;
+            font-size: 14px;
         }
 
-        .back-home:hover {
-            text-decoration: underline;
-        }
+        /* Mobile */
+        @media (max-width: 700px) {
 
-        @media (max-width: 600px) {
-            .projects-page {
-                padding: 40px 18px;
+            .navbar {
+                padding: 16px 5%;
+                flex-direction: column;
+                gap: 15px;
             }
 
-            .project-grid {
+            .nav-links {
+                gap: 13px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            .projects-header {
+                padding: 55px 20px 35px;
+            }
+
+            .projects-header h1 {
+                font-size: 34px;
+            }
+
+            .projects-container {
+                width: 90%;
+            }
+
+            .projects-grid {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
+
 <body>
 
-    <main class="projects-page">
-        <header class="projects-heading">
-            <span class="eyebrow">My Work</span>
-            <h1>My Projects</h1>
-            <p>
-                A collection of projects I've worked on while exploring
-                software development, data science, and artificial
-                intelligence.
-            </p>
-        </header>
+<div class="projects-page">
+
+    <!-- Navigation -->
+    <nav class="navbar">
+
+        <a href="{% url 'home' %}" class="logo">
+            AB.
+        </a>
+
+        <div class="nav-links">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'home' %}#skills">Skills</a>
+            <a href="{% url 'projects' %}">Projects</a>
+            <a href="{% url 'contact' %}" class="nav-contact">Contact</a>
+        </div>
+
+    </nav>
+
+
+    <!-- Header -->
+    <section class="projects-header">
+
+        <div class="small-title">
+            My Work
+        </div>
+
+        <h1>Projects & Experience</h1>
+
+        <p>
+            Here are some of the projects I have worked on while learning
+            Computer Science, Data Science, Machine Learning and web development.
+        </p>
+
+    </section>
+
+
+    <!-- Project Cards -->
+    <section class="projects-container">
 
         {% if projects %}
-            <section class="project-grid">
-                {% for project in projects %}
-                    <article class="project-card">
-                        <div class="project-placeholder" aria-hidden="true">
-                            ✦
-                        </div>
 
-                        <div class="project-content">
-                            <h2>{{ project.title }}</h2>
+        <div class="projects-grid">
 
-                            <p>{{ project.description }}</p>
+            {% for project in projects %}
 
-                            <div class="technology-list">
-                                {% for tech in project.technologies.split|default_if_none:"" %}
-                                    {% if tech %}
-                                        <span class="technology">
-                                            {{ tech }}
-                                        </span>
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
+            <article class="project-card">
 
-                            <div class="project-links">
-                                {% if project.github_link %}
-                                    <a class="github-button"
-                                       href="{{ project.github_link }}"
-                                       target="_blank"
-                                       rel="noopener noreferrer">
-                                        GitHub ↗
-                                    </a>
-                                {% endif %}
+                <div class="project-number">
+                    {{ forloop.counter }}
+                </div>
 
-                                {% if project.live_link %}
-                                    <a class="demo-button"
-                                       href="{{ project.live_link }}"
-                                       target="_blank"
-                                       rel="noopener noreferrer">
-                                        Live Demo ↗
-                                    </a>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </article>
-                {% endfor %}
-            </section>
+                <h2>
+                    {{ project.title }}
+                </h2>
+
+                <p class="project-description">
+                    {{ project.description }}
+                </p>
+
+                <div class="technologies">
+
+                    <strong>Technologies</strong>
+
+                    <div class="tech-text">
+                        {{ project.technologies }}
+                    </div>
+
+                </div>
+
+                <div class="project-buttons">
+
+                    {% if project.github_link %}
+                    <a
+                        href="{{ project.github_link }}"
+                        target="_blank"
+                        class="project-btn github-btn"
+                    >
+                        GitHub ↗
+                    </a>
+                    {% endif %}
+
+                    {% if project.live_link %}
+                    <a
+                        href="{{ project.live_link }}"
+                        target="_blank"
+                        class="project-btn live-btn"
+                    >
+                        Live Demo ↗
+                    </a>
+                    {% endif %}
+
+                </div>
+
+            </article>
+
+            {% endfor %}
+
+        </div>
+
         {% else %}
-            <div class="empty-projects">
-                <h2>Projects coming soon!</h2>
-                <p>I'm working on adding my projects here.</p>
-            </div>
+
+        <div class="no-projects">
+            <h2>No projects added yet.</h2>
+            <p>
+                Projects will appear here once they are added through the
+                Django admin panel.
+            </p>
+        </div>
+
         {% endif %}
 
-        <a href="{% url 'home' %}" class="back-home">
-            ← Back to Home
-        </a>
-    </main>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        © 2026 Apekshya Basnyat · Built with Django
+    </footer>
+
+</div>
 
 </body>
 </html>
