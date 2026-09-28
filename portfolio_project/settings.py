@@ -17,7 +17,11 @@ SECRET_KEY = 'django-insecure-portfolio-project-key'
 DEBUG = True
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'apekshya-basnyat.onrender.com',
+    'localhost',
+    '127.0.0.1',
+]
 
 
 INSTALLED_APPS = [

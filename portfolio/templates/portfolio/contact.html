@@ -1,132 +1,438 @@
+
 {% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Apekshya Basnyat</title>
+    <link rel="stylesheet" href="{% static 'portfolio/css/style.css' %}">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-    <title>
-        Contact | Apekshya Basnyat
-    </title>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #fff9fc;
+            color: #40333b;
+        }
 
-    <link
-        rel="stylesheet"
-        href="{% static 'portfolio/css/style.css' %}"
-    >
+        .navbar {
+            background: white;
+            border-bottom: 1px solid #f3dce7;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #d66b93;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #5c4b57;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #d66b93;
+        }
+
+        .nav-contact {
+            background: #d66b93;
+            color: white !important;
+            padding: 9px 18px;
+            border-radius: 20px;
+        }
+
+        .page-header {
+            text-align: center;
+            padding: 75px 20px 35px;
+        }
+
+        .small-title {
+            color: #d66b93;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .page-header h1 {
+            font-size: 44px;
+            margin: 12px 0;
+            color: #3e3039;
+        }
+
+        .page-header p {
+            max-width: 600px;
+            margin: auto;
+            color: #766a73;
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        .contact-container {
+            width: 88%;
+            max-width: 1050px;
+            margin: 20px auto 80px;
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 30px;
+            align-items: stretch;
+        }
+
+        .contact-info {
+            background: linear-gradient(145deg, #fce8f1, #fff2f7);
+            border: 1px solid #f3d5e2;
+            border-radius: 22px;
+            padding: 35px;
+        }
+
+        .contact-info h2 {
+            font-size: 26px;
+            margin: 0 0 12px;
+        }
+
+        .contact-info > p {
+            color: #766a73;
+            line-height: 1.7;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 13px;
+            align-items: flex-start;
+            margin: 23px 0;
+        }
+
+        .info-icon {
+            width: 42px;
+            height: 42px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 12px;
+            font-size: 19px;
+        }
+
+        .info-item h3 {
+            margin: 0 0 4px;
+            font-size: 14px;
+        }
+
+        .info-item p,
+        .info-item a {
+            margin: 0;
+            color: #786975;
+            font-size: 13px;
+            text-decoration: none;
+            overflow-wrap: anywhere;
+        }
+
+        .info-item a:hover {
+            color: #c45d85;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            display: inline-block;
+            text-decoration: none;
+            background: white;
+            color: #a84f73;
+            border: 1px solid #f1d1df;
+            border-radius: 10px;
+            padding: 10px 15px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #d66b93;
+            color: white;
+        }
+
+        .contact-form {
+            background: white;
+            border: 1px solid #f1dfe7;
+            border-radius: 22px;
+            padding: 35px;
+            box-shadow: 0 8px 25px rgba(180, 120, 145, 0.08);
+        }
+
+        .contact-form h2 {
+            margin: 0 0 8px;
+            font-size: 25px;
+        }
+
+        .form-intro {
+            color: #81747c;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 19px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #51434c;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 13px 15px;
+            border: 1px solid #eadce3;
+            border-radius: 10px;
+            background: #fffafd;
+            font-family: inherit;
+            font-size: 14px;
+            color: #40333b;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #d66b93;
+            box-shadow: 0 0 0 3px rgba(214, 107, 147, 0.12);
+        }
+
+        .form-group textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            border: none;
+            border-radius: 12px;
+            padding: 14px 20px;
+            background: #d66b93;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #c45d85;
+            transform: translateY(-2px);
+        }
+
+        .errorlist {
+            color: #c0395b;
+            font-size: 13px;
+            padding-left: 18px;
+        }
+
+        .form-errors {
+            color: #c0395b;
+            background: #fff0f2;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 18px;
+            font-size: 13px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 28px 20px;
+            border-top: 1px solid #f3dce7;
+            color: #8b7c85;
+            font-size: 14px;
+            background: white;
+        }
+
+        @media (max-width: 750px) {
+            .navbar {
+                padding: 16px 5%;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 13px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            .page-header {
+                padding: 55px 20px 30px;
+            }
+
+            .page-header h1 {
+                font-size: 34px;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                width: 90%;
+                margin-top: 10px;
+            }
+
+            .contact-info,
+            .contact-form {
+                padding: 25px;
+            }
+        }
+    </style>
 </head>
-
 
 <body>
 
+    <nav class="navbar">
+        <a href="{% url 'home' %}" class="logo">AB.</a>
 
-    <!-- NAVIGATION -->
-
-    <nav>
-
-        <div class="logo">
-            Apekshya
+        <div class="nav-links">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'skills' %}">Skills</a>
+            <a href="{% url 'projects' %}">Projects</a>
+            <a href="{% url 'contact' %}" class="nav-contact">Contact</a>
         </div>
-
-
-        <ul>
-
-            <li>
-                <a href="{% url 'home' %}">
-                    Home
-                </a>
-            </li>
-
-
-            <li>
-                <a href="{% url 'about' %}">
-                    About
-                </a>
-            </li>
-
-
-            <li>
-                <a href="{% url 'home' %}#skills">
-                    Skills
-                </a>
-            </li>
-
-
-            <li>
-                <a href="{% url 'home' %}#projects">
-                    Projects
-                </a>
-            </li>
-
-
-            <li>
-                <a href="{% url 'contact' %}">
-                    Contact
-                </a>
-            </li>
-
-        </ul>
-
     </nav>
 
-
-    <!-- CONTACT FORM -->
-
-    <section class="contact">
-
-        <h1 class="section-title">
-            Contact Me
-        </h1>
-
-
+    <header class="page-header">
+        <div class="small-title">Get in Touch</div>
+        <h1>Let's Connect</h1>
         <p>
-            Have a question, opportunity, or
-            just want to connect?
+            I'm open to internship opportunities, collaborations,
+            and conversations about technology, data science, and AI.
+            Feel free to reach out!
         </p>
+    </header>
 
+    <main class="contact-container">
 
-        <form
-            method="POST"
-            class="contact-form"
-        >
+        <section class="contact-info">
+            <h2>Contact Information</h2>
+            <p>
+                Have an opportunity or a project in mind?
+                I'd be happy to hear from you.
+            </p>
 
-            {% csrf_token %}
+            <div class="info-item">
+                <div class="info-icon">✉️</div>
+                <div>
+                    <h3>Email</h3>
+                    <a href="mailto:apekshyabasnyat22@gmail.com">
+                        apekshyabasnyat22@gmail.com
+                    </a>
+                </div>
+            </div>
 
+            <div class="info-item">
+                <div class="info-icon">💼</div>
+                <div>
+                    <h3>LinkedIn</h3>
+                    <a href="https://www.linkedin.com/in/apekshya-basnyat-053a812a6/"
+                       target="_blank" rel="noopener noreferrer">
+                        View my LinkedIn profile
+                    </a>
+                </div>
+            </div>
 
-            {{ form.as_p }}
+            <div class="info-item">
+                <div class="info-icon">📍</div>
+                <div>
+                    <h3>Location</h3>
+                    <p>Kathmandu, Nepal</p>
+                </div>
+            </div>
 
+            <div class="social-links">
+                <a href="https://github.com/apekshyabasnyat22-design"
+                   target="_blank" rel="noopener noreferrer">
+                    GitHub ↗
+                </a>
+                <a href="https://www.linkedin.com/in/apekshya-basnyat-053a812a6/"
+                   target="_blank" rel="noopener noreferrer">
+                    LinkedIn ↗
+                </a>
+            </div>
+        </section>
 
-            <button
-                type="submit"
-                class="button"
-            >
-                Send Message
-            </button>
+        <section class="contact-form">
+            <h2>Send Me a Message</h2>
+            <p class="form-intro">
+                Fill out the form below and I'll get back to you.
+            </p>
 
-        </form>
+            <form method="POST">
+                {% csrf_token %}
 
-    </section>
+                {% if form.non_field_errors %}
+                    <div class="form-errors">
+                        {{ form.non_field_errors }}
+                    </div>
+                {% endif %}
 
+                {% for field in form %}
+                    <div class="form-group">
+                        <label for="{{ field.id_for_label }}">
+                            {{ field.label }}
+                        </label>
 
-    <!-- FOOTER -->
+                        {{ field }}
+
+                        {% if field.errors %}
+                            {{ field.errors }}
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+                <button type="submit" class="submit-btn">
+                    Send Message →
+                </button>
+            </form>
+        </section>
+
+    </main>
 
     <footer>
-
-        <p>
-            © 2026 Apekshya Basnyat.
-            All Rights Reserved.
-        </p>
-
+        © 2026 Apekshya Basnyat · Built with Django
     </footer>
 
-
 </body>
-
 </html>
