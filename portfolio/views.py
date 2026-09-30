@@ -1,22 +1,15 @@
-
 from django.shortcuts import render, redirect
-from .models import Project
+from .models import Project, Certification
 from .forms import ContactForm
 
 
 def home(request):
     projects = Project.objects.all()
-
-    return render(
-        request,
-        'portfolio/home.html',
-        {'projects': projects}
-    )
+    return render(request, 'portfolio/home.html', {'projects': projects})
 
 
 def projects(request):
     all_projects = Project.objects.all()
-
     return render(
         request,
         'portfolio/projects.html',
@@ -28,6 +21,20 @@ def about(request):
     return render(request, 'portfolio/about.html')
 
 
+def skills(request):
+    return render(request, 'portfolio/skills.html')
+
+
+def certifications(request):
+    certifications = Certification.objects.all()
+
+    return render(
+        request,
+        'portfolio/certifications.html',
+        {'certifications': certifications}
+    )
+
+
 def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
@@ -35,6 +42,7 @@ def contact(request):
         if form.is_valid():
             form.save()
             return redirect('contact_success')
+
     else:
         form = ContactForm()
 
@@ -46,7 +54,7 @@ def contact(request):
 
 
 def contact_success(request):
-    return render(request, 'portfolio/contact_success.html')
-
-def skills(request):
-    return render(request, 'portfolio/skills.html')
+    return render(
+        request,
+        'portfolio/contact_success.html'
+    )

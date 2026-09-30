@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-          content="Apekshya Basnyat's portfolio. Computer Science student interested in Data Science, AI, and web development.">
+          content="Apekshya Basnyat's portfolio. Computer Science student specializing in Data Science, Data Analytics, Machine Learning and AI.">
 
-    <title>Apekshya Basnyat | Portfolio</title>
+    <title>Apekshya Basnyat | Data Science & AI Portfolio</title>
 
     <link rel="stylesheet" href="{% static 'portfolio/css/style.css' %}">
 
     <style>
+
         :root {
             --pink: #d95d98;
             --pink-dark: #b8447c;
@@ -22,6 +23,8 @@
             --muted: #77717b;
             --white: #ffffff;
             --border: #f1dce7;
+            --soft-pink: #fce5f0;
+            --soft-purple: #f1e9ff;
         }
 
         * {
@@ -41,6 +44,10 @@
             text-decoration: none;
         }
 
+        /* =========================
+           NAVBAR
+        ========================= */
+
         .site-header {
             position: sticky;
             top: 0;
@@ -55,6 +62,7 @@
             min-height: 76px;
             margin: 0 auto;
             padding: 12px 24px;
+
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -71,7 +79,8 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 28px;
+            gap: 26px;
+
             list-style: none;
             margin: 0;
             padding: 0;
@@ -81,7 +90,7 @@
             color: #514750;
             font-size: 14px;
             font-weight: 600;
-            transition: color 0.2s ease;
+            transition: 0.2s ease;
         }
 
         .nav-links a:hover {
@@ -100,12 +109,19 @@
             color: white;
         }
 
+
+        /* =========================
+           HERO
+        ========================= */
+
         .hero {
             position: relative;
             overflow: hidden;
-            min-height: 570px;
+            min-height: 590px;
+
             display: flex;
             align-items: center;
+
             background:
                 radial-gradient(
                     circle at 85% 25%,
@@ -124,28 +140,37 @@
             width: 100%;
             max-width: 1150px;
             margin: 0 auto;
+
             padding: 90px 24px;
+
             display: grid;
-            grid-template-columns: 1.3fr 0.7fr;
+            grid-template-columns: 1.2fr 0.8fr;
+
             align-items: center;
-            gap: 55px;
+            gap: 60px;
         }
 
         .hero-label {
             display: inline-block;
+
             padding: 7px 14px;
+
             border: 1px solid #f1c5db;
             border-radius: 30px;
+
             background: white;
             color: var(--pink-dark);
+
             font-size: 12px;
             font-weight: 700;
             letter-spacing: 1px;
+
             text-transform: uppercase;
         }
 
         .hero h1 {
             margin: 20px 0 8px;
+
             font-size: clamp(42px, 6vw, 68px);
             line-height: 1.1;
             letter-spacing: -2.5px;
@@ -157,15 +182,24 @@
 
         .hero h2 {
             margin: 15px 0;
+
             color: #625460;
+
             font-size: clamp(19px, 2.5vw, 25px);
             font-weight: 550;
         }
 
+        .hero-role {
+            color: var(--pink-dark);
+        }
+
         .hero-description {
-            max-width: 570px;
+            max-width: 610px;
+
             margin: 18px 0 28px;
+
             color: var(--muted);
+
             font-size: 16px;
             line-height: 1.9;
         }
@@ -179,13 +213,18 @@
         .primary-button,
         .secondary-button {
             display: inline-flex;
+
             justify-content: center;
             align-items: center;
+
             padding: 12px 22px;
+
             border: 1px solid var(--pink);
             border-radius: 30px;
+
             font-size: 14px;
             font-weight: 700;
+
             transition: 0.2s ease;
         }
 
@@ -210,30 +249,135 @@
             transform: translateY(-2px);
         }
 
+
+        /* =========================
+           HERO RIGHT SIDE
+        ========================= */
+
         .hero-art {
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
+        .hero-profile-wrapper {
+            position: relative;
+        }
+
         .hero-circle {
-            width: min(300px, 75vw);
-            aspect-ratio: 1;
+            width: 310px;
+            height: 310px;
+
             display: flex;
             justify-content: center;
             align-items: center;
+
             border: 1px solid #f1c9dc;
             border-radius: 50%;
-            background: linear-gradient(145deg, #ffe8f2, #f3eaff);
-            box-shadow: 0 22px 60px rgba(189, 92, 143, 0.12);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #ffe8f2,
+                    #f3eaff
+                );
+
+            box-shadow:
+                0 22px 60px rgba(189, 92, 143, 0.12);
+
+            overflow: hidden;
+        }
+
+        .hero-circle img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
         }
 
         .hero-initials {
             color: var(--pink-dark);
+
             font-family: Georgia, serif;
+
             font-size: 100px;
             font-weight: 700;
         }
+
+        .hero-floating-card {
+            position: absolute;
+
+            right: -25px;
+            bottom: 20px;
+
+            padding: 15px 20px;
+
+            border: 1px solid var(--border);
+            border-radius: 16px;
+
+            background: white;
+
+            box-shadow:
+                0 12px 30px rgba(75, 38, 58, 0.10);
+        }
+
+        .hero-floating-card strong {
+            display: block;
+
+            color: var(--pink-dark);
+            font-size: 14px;
+        }
+
+        .hero-floating-card span {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           QUICK STATS
+        ========================= */
+
+        .quick-section {
+            background: white;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .quick-inner {
+            max-width: 1000px;
+            margin: auto;
+
+            padding: 25px 24px;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .quick-item {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .quick-number {
+            display: block;
+
+            color: var(--pink);
+
+            font-size: 25px;
+            font-weight: 750;
+        }
+
+        .quick-label {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           GENERAL SECTIONS
+        ========================= */
 
         .section {
             max-width: 1150px;
@@ -242,30 +386,109 @@
         }
 
         .section-heading {
-            margin-bottom: 35px;
+            margin-bottom: 40px;
             text-align: center;
         }
 
         .section-eyebrow {
             color: var(--pink-dark);
+
             font-size: 12px;
             font-weight: 750;
             letter-spacing: 2px;
+
             text-transform: uppercase;
         }
 
         .section-heading h2 {
             margin: 8px 0;
+
             font-size: clamp(28px, 4vw, 38px);
             letter-spacing: -1px;
         }
 
         .section-heading p {
-            max-width: 600px;
+            max-width: 620px;
             margin: 8px auto 0;
+
             color: var(--muted);
             font-size: 15px;
         }
+
+
+        /* =========================
+           WHAT I DO
+        ========================= */
+
+        .services-section {
+            background: #fffafd;
+        }
+
+        .services-grid {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 20px;
+        }
+
+        .service-card {
+            padding: 28px 23px;
+
+            border: 1px solid var(--border);
+            border-radius: 18px;
+
+            background: white;
+
+            box-shadow:
+                0 8px 28px rgba(75, 38, 58, 0.04);
+
+            transition: 0.25s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 15px 35px rgba(75, 38, 58, 0.09);
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            margin-bottom: 18px;
+
+            border-radius: 14px;
+
+            background: var(--pink-light);
+
+            font-size: 22px;
+        }
+
+        .service-card h3 {
+            margin: 0 0 10px;
+
+            font-size: 17px;
+        }
+
+        .service-card p {
+            margin: 0;
+
+            color: var(--muted);
+
+            font-size: 13px;
+            line-height: 1.75;
+        }
+
+
+        /* =========================
+           SKILLS
+        ========================= */
 
         .skills-section {
             background: white;
@@ -274,32 +497,67 @@
         .skills-inner {
             max-width: 1150px;
             margin: 0 auto;
+
             padding: 75px 24px;
         }
 
-        .skills-grid {
+        .skills-categories {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .skill-category {
+            padding: 25px;
+
+            border: 1px solid var(--border);
+            border-radius: 18px;
+
+            background: #fffafd;
+        }
+
+        .skill-category h3 {
+            margin: 0 0 18px;
+
+            color: var(--pink-dark);
+
+            font-size: 16px;
+        }
+
+        .skill-list {
             display: flex;
-            justify-content: center;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 9px;
         }
 
         .skill-pill {
-            padding: 10px 17px;
+            padding: 8px 13px;
+
             border: 1px solid var(--border);
             border-radius: 30px;
-            background: #fff7fb;
+
+            background: white;
             color: #794663;
-            font-size: 14px;
+
+            font-size: 13px;
             font-weight: 600;
+
             transition: 0.2s ease;
         }
 
         .skill-pill:hover {
             border-color: #e9a6c7;
             background: var(--pink-light);
+
             transform: translateY(-2px);
         }
+
+
+        /* =========================
+           PROJECTS
+        ========================= */
 
         .projects-section {
             background: #fffafd;
@@ -307,21 +565,27 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(
-                auto-fit,
-                minmax(270px, 1fr)
-            );
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(270px, 1fr));
+
             gap: 24px;
         }
 
         .project-card {
             display: flex;
             flex-direction: column;
+
             overflow: hidden;
+
             border: 1px solid var(--border);
             border-radius: 18px;
+
             background: white;
-            box-shadow: 0 8px 28px rgba(75, 38, 58, 0.05);
+
+            box-shadow:
+                0 8px 28px rgba(75, 38, 58, 0.05);
+
             transition:
                 transform 0.25s ease,
                 box-shadow 0.25s ease;
@@ -329,45 +593,86 @@
 
         .project-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(75, 38, 58, 0.1);
+
+            box-shadow:
+                0 15px 35px rgba(75, 38, 58, 0.1);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 190px;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fce5f0,
+                    #f1e9ff
+                );
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.04);
         }
 
         .project-top {
             min-height: 125px;
+
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(
-                135deg,
-                #fce5f0,
-                #f1e9ff
-            );
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fce5f0,
+                    #f1e9ff
+                );
+
             color: #bb5487;
+
             font-size: 38px;
         }
 
         .project-content {
             flex: 1;
+
             padding: 23px;
+
             display: flex;
             flex-direction: column;
         }
 
         .project-content h3 {
             margin: 0 0 10px;
+
             font-size: 19px;
         }
 
         .project-content p {
             margin: 0 0 17px;
+
             color: var(--muted);
+
             font-size: 14px;
             line-height: 1.8;
         }
 
         .project-tech {
             margin-top: auto !important;
+
             color: #9a4771 !important;
+
             font-size: 12px !important;
             font-weight: 650;
         }
@@ -375,15 +680,20 @@
         .project-actions {
             display: flex;
             flex-wrap: wrap;
+
             gap: 10px;
+
             margin-top: 10px;
         }
 
         .project-actions a {
             padding: 8px 13px;
+
             border-radius: 20px;
+
             background: var(--pink-light);
             color: var(--pink-dark);
+
             font-size: 12px;
             font-weight: 700;
         }
@@ -399,10 +709,14 @@
 
         .all-projects a {
             display: inline-block;
+
             padding: 11px 20px;
+
             border: 1px solid var(--pink);
             border-radius: 30px;
+
             color: var(--pink-dark);
+
             font-size: 14px;
             font-weight: 700;
         }
@@ -411,58 +725,150 @@
             background: var(--pink-light);
         }
 
+
+        /* =========================
+           LEARNING
+        ========================= */
+
+        .learning-section {
+            background: white;
+        }
+
+        .learning-box {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 45px;
+
+            padding: 40px;
+
+            border: 1px solid var(--border);
+            border-radius: 22px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff0f6,
+                    #f7f1ff
+                );
+        }
+
+        .learning-box h2 {
+            margin: 7px 0 14px;
+
+            font-size: 30px;
+        }
+
+        .learning-box h2 span {
+            color: var(--pink);
+        }
+
+        .learning-box p {
+            margin: 0;
+
+            color: var(--muted);
+
+            font-size: 14px;
+        }
+
+        .learning-tags {
+            display: flex;
+            align-items: center;
+            align-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+        }
+
+        .learning-tags span {
+            padding: 9px 14px;
+
+            border: 1px solid var(--border);
+            border-radius: 25px;
+
+            background: white;
+
+            color: #794663;
+
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+
+        /* =========================
+           CONTACT
+        ========================= */
+
         .contact-section {
-            background: linear-gradient(
-                135deg,
-                #fff0f6,
-                #f7f1ff
-            );
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff0f6,
+                    #f7f1ff
+                );
         }
 
         .contact-inner {
             max-width: 800px;
+
             margin: 0 auto;
+
             padding: 75px 24px;
+
             text-align: center;
+        }
+
+        .contact-inner h2 {
+            margin: 8px 0 12px;
+
+            font-size: clamp(28px, 4vw, 38px);
         }
 
         .contact-inner p {
             margin: 10px auto 25px;
+
             color: var(--muted);
         }
 
         .contact-buttons {
             display: flex;
+
             justify-content: center;
+
             flex-wrap: wrap;
+
             gap: 12px;
         }
 
+
+        /* =========================
+           FOOTER
+        ========================= */
+
         .site-footer {
             padding: 23px 20px;
+
             background: #fff;
+
             color: var(--muted);
+
             text-align: center;
+
             font-size: 13px;
         }
 
-        @media (max-width: 760px) {
-            .navbar {
-                flex-direction: column;
-                gap: 12px;
-                padding: 14px 18px;
-            }
 
-            .nav-links {
-                justify-content: center;
-                flex-wrap: wrap;
-                gap: 12px 20px;
-            }
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
 
             .hero-inner {
                 grid-template-columns: 1fr;
-                gap: 35px;
-                padding: 65px 22px;
+
                 text-align: center;
             }
 
@@ -479,12 +885,59 @@
                 grid-row: 1;
             }
 
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .skills-categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .learning-box {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        @media (max-width: 760px) {
+
+            .navbar {
+                flex-direction: column;
+
+                gap: 12px;
+
+                padding: 14px 18px;
+            }
+
+            .nav-links {
+                justify-content: center;
+
+                flex-wrap: wrap;
+
+                gap: 12px 18px;
+            }
+
+            .hero-inner {
+                padding: 65px 22px;
+            }
+
             .hero-circle {
-                width: 190px;
+                width: 220px;
+                height: 220px;
             }
 
             .hero-initials {
                 font-size: 70px;
+            }
+
+            .hero-floating-card {
+                right: -5px;
+                bottom: 0;
+            }
+
+            .quick-inner {
+                grid-template-columns: 1fr;
+                gap: 5px;
             }
 
             .section,
@@ -492,12 +945,23 @@
                 padding: 58px 20px;
             }
 
+            .services-grid,
+            .skills-categories {
+                grid-template-columns: 1fr;
+            }
+
             .projects-grid {
                 grid-template-columns: 1fr;
             }
+
+            .learning-box {
+                padding: 28px;
+            }
         }
 
+
         @media (prefers-reduced-motion: reduce) {
+
             *,
             *::before,
             *::after {
@@ -505,12 +969,20 @@
                 transition: none !important;
             }
         }
+
     </style>
 </head>
 
+
 <body>
 
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
     <header class="site-header">
+
         <nav class="navbar" aria-label="Main navigation">
 
             <a href="{% url 'home' %}" class="logo">
@@ -518,6 +990,7 @@
             </a>
 
             <ul class="nav-links">
+
                 <li>
                     <a href="{% url 'home' %}">
                         Home
@@ -543,47 +1016,72 @@
                 </li>
 
                 <li>
-                    <a href="#contact" class="nav-contact">
-                        Contact
+                    <a href="{% url 'certifications' %}">
+                        Certifications
                     </a>
                 </li>
+
+                <li>
+                    <a href="{% url 'contact' %}"
+                        class="nav-contact">
+                         Contact
+                    </a>
+                </li>
+
             </ul>
 
         </nav>
+
     </header>
+
 
     <main>
 
-        <!-- HERO SECTION -->
+
+        <!-- =========================
+             HERO
+        ========================= -->
 
         <section class="hero" id="home">
 
             <div class="hero-inner">
 
+
                 <div class="hero-content">
 
                     <span class="hero-label">
-                        Welcome to my portfolio
+                        Computer Science • Data Science
                     </span>
 
                     <h1>
-                        Hi, I'm <span>Apekshya</span>
+                        Hi, I'm
+                        <span>Apekshya</span>
                     </h1>
 
                     <h2>
-                        Computer Science | Data Science | AI
+                        Data Science Student |
+                        <span class="hero-role">
+                            Data Analytics & AI
+                        </span>
                     </h2>
 
                     <p class="hero-description">
-                        I'm passionate about exploring data, building
-                        practical applications, and learning how technology
-                        can solve real-world problems. Welcome to my
-                        portfolio, where I share my projects and journey.
+
+                        I'm a Computer Science student specializing in
+                        Data Science with a strong interest in Data
+                        Analytics, Machine Learning and Artificial
+                        Intelligence.
+
+                        I enjoy turning data and ideas into practical
+                        projects that solve real-world problems.
+
                     </p>
+
 
                     <div class="hero-buttons">
 
-                        <a href="#projects" class="primary-button">
+                        <a href="#projects"
+                           class="primary-button">
                             Explore My Projects →
                         </a>
 
@@ -602,13 +1100,41 @@
 
                 </div>
 
-                <div class="hero-art"
-                     aria-label="A decorative monogram">
 
-                    <div class="hero-circle">
-                        <span class="hero-initials">
-                            AB
-                        </span>
+                <!-- HERO VISUAL -->
+
+                <div class="hero-art">
+
+                    <div class="hero-profile-wrapper">
+
+                        <div class="hero-circle">
+
+                            <!--
+                            When you have your photo,
+                            put it here.
+
+                            For now AB initials will show.
+                            -->
+
+                            <span class="hero-initials">
+                                AB
+                            </span>
+
+                        </div>
+
+
+                        <div class="hero-floating-card">
+
+                            <strong>
+                                Data • AI • Analytics
+                            </strong>
+
+                            <span>
+                                Building & learning
+                            </span>
+
+                        </div>
+
                     </div>
 
                 </div>
@@ -618,65 +1144,48 @@
         </section>
 
 
-        <!-- SKILLS SECTION -->
+        <!-- =========================
+             QUICK INFORMATION
+        ========================= -->
 
-        <section class="skills-section" id="skills">
+        <section class="quick-section">
 
-            <div class="skills-inner">
+            <div class="quick-inner">
 
-                <div class="section-heading">
+                <div class="quick-item">
 
-                    <span class="section-eyebrow">
-                        What I work with
-                    </span>
-
-                    <h2>
-                        My Skills
-                    </h2>
-
-                    <p>
-                        Technologies and areas I've been learning
-                        and applying in my projects.
-                    </p>
-
-                </div>
-
-                <div class="skills-grid">
-
-                    <span class="skill-pill">
+                    <span class="quick-number">
                         Python
                     </span>
 
-                    <span class="skill-pill">
-                        Django
+                    <span class="quick-label">
+                        Primary Programming
                     </span>
 
-                    <span class="skill-pill">
-                        Data Science
+                </div>
+
+
+                <div class="quick-item">
+
+                    <span class="quick-number">
+                        Data
                     </span>
 
-                    <span class="skill-pill">
-                        Data Analytics
+                    <span class="quick-label">
+                        Analysis & Visualization
                     </span>
 
-                    <span class="skill-pill">
-                        Machine Learning
+                </div>
+
+
+                <div class="quick-item">
+
+                    <span class="quick-number">
+                        AI
                     </span>
 
-                    <span class="skill-pill">
-                        SQL
-                    </span>
-
-                    <span class="skill-pill">
-                        HTML
-                    </span>
-
-                    <span class="skill-pill">
-                        CSS
-                    </span>
-
-                    <span class="skill-pill">
-                        Git &amp; GitHub
+                    <span class="quick-label">
+                        Machine Learning & GenAI
                     </span>
 
                 </div>
@@ -686,16 +1195,367 @@
         </section>
 
 
-        <!-- PROJECTS SECTION -->
+        <!-- =========================
+             WHAT I DO
+        ========================= -->
 
-        <section class="projects-section" id="projects">
+        <section class="services-section">
 
             <div class="section">
+
 
                 <div class="section-heading">
 
                     <span class="section-eyebrow">
-                        A few things I've built
+                        What I Do
+                    </span>
+
+                    <h2>
+                        Areas I'm Building My Skills In
+                    </h2>
+
+                    <p>
+                        My portfolio combines data, programming and
+                        artificial intelligence through practical
+                        academic and personal projects.
+                    </p>
+
+                </div>
+
+
+                <div class="services-grid">
+
+
+                    <div class="service-card">
+
+                        <div class="service-icon">
+                            📊
+                        </div>
+
+                        <h3>
+                            Data Analysis
+                        </h3>
+
+                        <p>
+                            Working with datasets to clean, explore
+                            and analyze information while identifying
+                            useful patterns and insights.
+                        </p>
+
+                    </div>
+
+
+                    <div class="service-card">
+
+                        <div class="service-icon">
+                            🤖
+                        </div>
+
+                        <h3>
+                            Machine Learning
+                        </h3>
+
+                        <p>
+                            Building and experimenting with machine
+                            learning models for prediction and
+                            practical problem-solving.
+                        </p>
+
+                    </div>
+
+
+                    <div class="service-card">
+
+                        <div class="service-icon">
+                            📈
+                        </div>
+
+                        <h3>
+                            Data Visualization
+                        </h3>
+
+                        <p>
+                            Presenting information through dashboards,
+                            charts and visualizations that make data
+                            easier to understand.
+                        </p>
+
+                    </div>
+
+
+                    <div class="service-card">
+
+                        <div class="service-icon">
+                            ✨
+                        </div>
+
+                        <h3>
+                            AI & Automation
+                        </h3>
+
+                        <p>
+                            Exploring Generative AI, intelligent tools
+                            and automation to understand practical
+                            applications of modern AI.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SKILLS
+        ========================= -->
+
+        <section class="skills-section"
+                 id="skills">
+
+            <div class="skills-inner">
+
+
+                <div class="section-heading">
+
+                    <span class="section-eyebrow">
+                        Technical Skills
+                    </span>
+
+                    <h2>
+                        Tools & Technologies
+                    </h2>
+
+                    <p>
+                        Technologies and areas I have worked with
+                        through coursework, projects and practical
+                        learning.
+                    </p>
+
+                </div>
+
+
+                <div class="skills-categories">
+
+
+                    <!-- PROGRAMMING -->
+
+                    <div class="skill-category">
+
+                        <h3>
+                            Programming & Data
+                        </h3>
+
+                        <div class="skill-list">
+
+                            <span class="skill-pill">
+                                Python
+                            </span>
+
+                            <span class="skill-pill">
+                                SQL
+                            </span>
+
+                            <span class="skill-pill">
+                                Pandas
+                            </span>
+
+                            <span class="skill-pill">
+                                NumPy
+                            </span>
+
+                            <span class="skill-pill">
+                                Data Analysis
+                            </span>
+
+                            <span class="skill-pill">
+                                Data Science
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- AI -->
+
+                    <div class="skill-category">
+
+                        <h3>
+                            Machine Learning & AI
+                        </h3>
+
+                        <div class="skill-list">
+
+                            <span class="skill-pill">
+                                Machine Learning
+                            </span>
+
+                            <span class="skill-pill">
+                                Scikit-learn
+                            </span>
+
+                            <span class="skill-pill">
+                                Generative AI
+                            </span>
+
+                            <span class="skill-pill">
+                                Gemini API
+                            </span>
+
+                            <span class="skill-pill">
+                                AI Automation
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- WEB -->
+
+                    <div class="skill-category">
+
+                        <h3>
+                            Web Development
+                        </h3>
+
+                        <div class="skill-list">
+
+                            <span class="skill-pill">
+                                Django
+                            </span>
+
+                            <span class="skill-pill">
+                                HTML
+                            </span>
+
+                            <span class="skill-pill">
+                                CSS
+                            </span>
+
+                            <span class="skill-pill">
+                                JavaScript
+                            </span>
+
+                            <span class="skill-pill">
+                                Bootstrap
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- DATABASE -->
+
+                    <div class="skill-category">
+
+                        <h3>
+                            Databases
+                        </h3>
+
+                        <div class="skill-list">
+
+                            <span class="skill-pill">
+                                PostgreSQL
+                            </span>
+
+                            <span class="skill-pill">
+                                MySQL
+                            </span>
+
+                            <span class="skill-pill">
+                                Database Design
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- VISUALIZATION -->
+
+                    <div class="skill-category">
+
+                        <h3>
+                            Visualization
+                        </h3>
+
+                        <div class="skill-list">
+
+                            <span class="skill-pill">
+                                Tableau
+                            </span>
+
+                            <span class="skill-pill">
+                                Matplotlib
+                            </span>
+
+                            <span class="skill-pill">
+                                Data Visualization
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TOOLS -->
+
+                    <div class="skill-category">
+
+                        <h3>
+                            Tools
+                        </h3>
+
+                        <div class="skill-list">
+
+                            <span class="skill-pill">
+                                Git
+                            </span>
+
+                            <span class="skill-pill">
+                                GitHub
+                            </span>
+
+                            <span class="skill-pill">
+                                VS Code
+                            </span>
+
+                            <span class="skill-pill">
+                                AWS
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PROJECTS
+        ========================= -->
+
+        <section class="projects-section"
+                 id="projects">
+
+            <div class="section">
+
+
+                <div class="section-heading">
+
+                    <span class="section-eyebrow">
+                        A Few Things I've Built
                     </span>
 
                     <h2>
@@ -703,75 +1563,113 @@
                     </h2>
 
                     <p>
-                        A selection of projects where I've explored
-                        programming, data, and problem-solving.
+                        Projects where I have applied programming,
+                        data analysis, machine learning and
+                        problem-solving concepts.
                     </p>
 
                 </div>
 
+
                 <div class="projects-grid">
 
-                    {% for project in projects %}
+
+                    {% for project in projects|slice:":6" %}
+
 
                         <article class="project-card">
 
-                            <div class="project-top"
-                                 aria-hidden="true">
-                                ✦
-                            </div>
+
+                            {% if project.image %}
+
+                                <div class="project-image">
+
+                                    <img
+                                        src="{{ project.image.url }}"
+                                        alt="{{ project.title }} screenshot"
+                                        loading="lazy"
+                                    >
+
+                                </div>
+
+                            {% else %}
+
+                                <div class="project-top"
+                                     aria-hidden="true">
+                                    ✦
+                                </div>
+
+                            {% endif %}
+
 
                             <div class="project-content">
+
 
                                 <h3>
                                     {{ project.title }}
                                 </h3>
 
+
                                 <p>
                                     {{ project.description }}
                                 </p>
+
 
                                 <p class="project-tech">
                                     Technologies:
                                     {{ project.technologies }}
                                 </p>
 
+
                                 <div class="project-actions">
+
 
                                     {% if project.github_link %}
 
-                                        <a href="{{ project.github_link }}"
-                                           target="_blank"
-                                           rel="noopener noreferrer">
+                                        <a
+                                            href="{{ project.github_link }}"
+                                            target="_blank"
+                                            rel="noopener noreferrer">
                                             GitHub ↗
                                         </a>
 
                                     {% endif %}
 
+
                                     {% if project.live_link %}
 
-                                        <a href="{{ project.live_link }}"
-                                           target="_blank"
-                                           rel="noopener noreferrer">
+                                        <a
+                                            href="{{ project.live_link }}"
+                                            target="_blank"
+                                            rel="noopener noreferrer">
                                             Live Demo ↗
                                         </a>
 
                                     {% endif %}
 
+
                                 </div>
+
 
                             </div>
 
+
                         </article>
 
+
                     {% empty %}
+
 
                         <p>
                             No projects added yet. Check back soon!
                         </p>
 
+
                     {% endfor %}
 
+
                 </div>
+
 
                 <div class="all-projects">
 
@@ -781,61 +1679,153 @@
 
                 </div>
 
+
             </div>
 
         </section>
 
 
-        <!-- CONTACT SECTION -->
+        <!-- =========================
+             CURRENTLY LEARNING
+        ========================= -->
 
-        <section class="contact-section" id="contact">
+        <section class="learning-section">
+
+            <div class="section">
+
+
+                <div class="learning-box">
+
+
+                    <div>
+
+                        <span class="section-eyebrow">
+                            Currently Learning
+                        </span>
+
+                        <h2>
+                            Always learning,
+                            <span>always building.</span>
+                        </h2>
+
+                        <p>
+                            I am continuously improving my technical
+                            skills through projects, coursework and
+                            hands-on practice, with a focus on
+                            Data Science, Artificial Intelligence,
+                            Data Analytics and software development.
+                        </p>
+
+                    </div>
+
+
+                    <div class="learning-tags">
+
+                        <span>
+                            Python
+                        </span>
+
+                        <span>
+                            SQL
+                        </span>
+
+                        <span>
+                            Machine Learning
+                        </span>
+
+                        <span>
+                            Generative AI
+                        </span>
+
+                        <span>
+                            Data Analytics
+                        </span>
+
+                        <span>
+                            Django
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CONTACT
+        ========================= -->
+
+        <section class="contact-section"
+                 id="contact">
 
             <div class="contact-inner">
 
+
                 <span class="section-eyebrow">
-                    Let's connect
+                    Let's Connect
                 </span>
 
+
                 <h2>
-                    Have a project or opportunity in mind?
+                    Have an opportunity or
+                    project in mind?
                 </h2>
 
+
                 <p>
-                    I'm always interested in learning, collaborating,
-                    and connecting with people in technology.
+                    I'm open to internship opportunities and
+                    interested in connecting with people working
+                    in Data Science, Data Analytics, AI and
+                    related technology fields.
                 </p>
 
+
                 <div class="contact-buttons">
+
 
                     <a href="{% url 'contact' %}"
                        class="primary-button">
                         Contact Me
                     </a>
 
-                    <a href="https://github.com/apekshyabasnyat22-design"
-                       class="secondary-button"
-                       target="_blank"
-                       rel="noopener noreferrer">
+
+                    <a
+                        href="https://github.com/apekshyabasnyat22-design"
+                        class="secondary-button"
+                        target="_blank"
+                        rel="noopener noreferrer">
                         GitHub ↗
                     </a>
 
-                    <a href="https://www.linkedin.com/in/apekshya-basnyat-053a812a6/"
-                       class="secondary-button"
-                       target="_blank"
-                       rel="noopener noreferrer">
+
+                    <a
+                        href="https://www.linkedin.com/in/apekshya-basnyat-053a812a6/"
+                        class="secondary-button"
+                        target="_blank"
+                        rel="noopener noreferrer">
                         LinkedIn ↗
                     </a>
 
+
                 </div>
+
 
             </div>
 
         </section>
 
+
     </main>
 
 
-    <!-- FOOTER -->
+    <!-- =========================
+         FOOTER
+    ========================= -->
 
     <footer class="site-footer">
 
@@ -845,6 +1835,6 @@
 
     </footer>
 
+
 </body>
 </html>
-
