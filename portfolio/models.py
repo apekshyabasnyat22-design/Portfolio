@@ -51,10 +51,28 @@ class Experience(models.Model):
 
 
 class ContactMessage(models.Model):
+
+    REASON_CHOICES = [
+        ('internship', 'Internship opportunity'),
+        ('job', 'Job opportunity'),
+        ('collaboration', 'Project collaboration'),
+        ('networking', 'Networking'),
+        ('other', 'Other'),
+    ]
+
     name = models.CharField(max_length=100)
     email = models.EmailField()
+    subject = models.CharField(
+        max_length=200,
+        default='General inquiry'
+    )
+    reason = models.CharField(
+        max_length=50,
+        choices=REASON_CHOICES,
+        default='other'
+    )
     message = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.name} - {self.email}"
+        return f"{self.name} - {self.subject}"
