@@ -1,6 +1,5 @@
 
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -198,6 +197,7 @@
         .form-intro {
             color: #81747c;
             font-size: 14px;
+            line-height: 1.6;
             margin-bottom: 25px;
         }
 
@@ -214,7 +214,9 @@
         }
 
         .form-group input,
+        .form-group select,
         .form-group textarea {
+            display: block;
             width: 100%;
             padding: 13px 15px;
             border: 1px solid #eadce3;
@@ -228,9 +230,14 @@
         }
 
         .form-group input:focus,
+        .form-group select:focus,
         .form-group textarea:focus {
             border-color: #d66b93;
             box-shadow: 0 0 0 3px rgba(214, 107, 147, 0.12);
+        }
+
+        .form-group select {
+            cursor: pointer;
         }
 
         .form-group textarea {
@@ -238,21 +245,42 @@
             resize: vertical;
         }
 
-        .submit-btn {
+        .submit-btn,
+        .linkedin-message-btn {
+            display: block;
             width: 100%;
-            border: none;
             border-radius: 12px;
             padding: 14px 20px;
-            background: #d66b93;
-            color: white;
+            text-align: center;
+            font-family: inherit;
             font-size: 15px;
             font-weight: 600;
-            cursor: pointer;
+            text-decoration: none;
             transition: 0.3s;
+        }
+
+        .submit-btn {
+            border: none;
+            background: #d66b93;
+            color: white;
+            cursor: pointer;
         }
 
         .submit-btn:hover {
             background: #c45d85;
+            transform: translateY(-2px);
+        }
+
+        .linkedin-message-btn {
+            margin-top: 12px;
+            border: 1px solid #e8cbd8;
+            background: #fff5fa;
+            color: #a84f73;
+        }
+
+        .linkedin-message-btn:hover {
+            background: #fce5f0;
+            color: #8e3d60;
             transform: translateY(-2px);
         }
 
@@ -337,9 +365,9 @@
         <div class="small-title">Get in Touch</div>
         <h1>Let's Connect</h1>
         <p>
-            I'm open to internship opportunities, collaborations,
-            and conversations about technology, data science, and AI.
-            Feel free to reach out!
+            I'm open to internship opportunities, job opportunities,
+            collaborations, and conversations about technology,
+            data science, and AI. Feel free to reach out!
         </p>
     </header>
 
@@ -366,8 +394,11 @@
                 <div class="info-icon">💼</div>
                 <div>
                     <h3>LinkedIn</h3>
-                    <a href="https://www.linkedin.com/in/apekshya-basnyat-053a812a6/"
-                       target="_blank" rel="noopener noreferrer">
+                    <a
+                        href="https://www.linkedin.com/in/apekshya-basnyat-053a812a6/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         View my LinkedIn profile
                     </a>
                 </div>
@@ -382,12 +413,19 @@
             </div>
 
             <div class="social-links">
-                <a href="https://github.com/apekshyabasnyat22-design"
-                   target="_blank" rel="noopener noreferrer">
+                <a
+                    href="https://github.com/apekshyabasnyat22-design"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     GitHub ↗
                 </a>
-                <a href="https://www.linkedin.com/in/apekshya-basnyat-053a812a6/"
-                   target="_blank" rel="noopener noreferrer">
+
+                <a
+                    href="https://www.linkedin.com/in/apekshya-basnyat-053a812a6/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     LinkedIn ↗
                 </a>
             </div>
@@ -397,6 +435,7 @@
             <h2>Send Me a Message</h2>
             <p class="form-intro">
                 Fill out the form below and I'll get back to you.
+                You can also contact me directly on LinkedIn.
             </p>
 
             <form method="POST">
@@ -416,6 +455,10 @@
 
                         {{ field }}
 
+                        {% if field.help_text %}
+                            <small>{{ field.help_text }}</small>
+                        {% endif %}
+
                         {% if field.errors %}
                             {{ field.errors }}
                         {% endif %}
@@ -425,6 +468,15 @@
                 <button type="submit" class="submit-btn">
                     Send Message →
                 </button>
+
+                <a
+                    href="https://www.linkedin.com/in/apekshya-basnyat-053a812a6/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="linkedin-message-btn"
+                >
+                    Message Me on LinkedIn ↗
+                </a>
             </form>
         </section>
 
